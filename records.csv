@@ -1,0 +1,37 @@
+List<Gas_Station__c> gasStations = [SELECT Id, Name FROM Gas_Station__c LIMIT 10];
+
+// Ensure there are enough gas stations available
+if (gasStations.size() < 10) {
+    System.debug('Not enough Gas_Station__c records available.');
+    return;
+}
+
+// Extract the IDs
+Id gasStation1 = gasStations[0].Id;
+Id gasStation2 = gasStations[1].Id;
+Id gasStation3 = gasStations[2].Id;
+Id gasStation4 = gasStations[3].Id;
+Id gasStation5 = gasStations[4].Id;
+Id gasStation6 = gasStations[5].Id;
+Id gasStation7 = gasStations[6].Id;
+Id gasStation8 = gasStations[7].Id;
+Id gasStation9 = gasStations[8].Id;
+Id gasStation10 = gasStations[9].Id;
+// List of Buyer records to insert
+List<Buyer__c> buyers = new List<Buyer__c>();
+
+
+// Create Buyer records with valid Gas_Station references
+buyers.add(new Buyer__c(First_Name__c = 'John', Last_Name__c = 'Doe', Phone_Number__c = '1234567890', Gas_Station__c = gasStation1));
+buyers.add(new Buyer__c(First_Name__c = 'Jane', Last_Name__c = 'Smith', Phone_Number__c = '0987654321', Gas_Station__c = gasStation2));
+buyers.add(new Buyer__c(First_Name__c = 'Bob', Last_Name__c = 'Johnson', Phone_Number__c = '2345678901', Gas_Station__c = gasStation3));
+buyers.add(new Buyer__c(First_Name__c = 'Alice', Last_Name__c = 'Williams', Phone_Number__c = '3456789012', Gas_Station__c = gasStation4));
+buyers.add(new Buyer__c(First_Name__c = 'Michael', Last_Name__c = 'Brown', Phone_Number__c = '4567890123', Gas_Station__c = gasStation5));
+buyers.add(new Buyer__c(First_Name__c = 'Emily', Last_Name__c = 'Jones', Phone_Number__c = '5678901234', Gas_Station__c = gasStation6));
+buyers.add(new Buyer__c(First_Name__c = 'David', Last_Name__c = 'Miller', Phone_Number__c = '6789012345', Gas_Station__c = gasStation7));
+buyers.add(new Buyer__c(First_Name__c = 'Sarah', Last_Name__c = 'Davis', Phone_Number__c = '7890123456', Gas_Station__c = gasStation8));
+buyers.add(new Buyer__c(First_Name__c = 'Chris', Last_Name__c = 'Garcia', Phone_Number__c = '8901234567', Gas_Station__c = gasStation9));
+buyers.add(new Buyer__c(First_Name__c = 'Laura', Last_Name__c = 'Martinez', Phone_Number__c = '9012345678', Gas_Station__c = gasStation10));
+
+// Insert the Buyer records
+insert buyers;
